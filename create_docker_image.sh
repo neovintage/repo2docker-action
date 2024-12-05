@@ -133,7 +133,10 @@ if [ -z "$INPUT_LATEST_TAG_OFF" ]; then
     docker tag ${SHA_NAME} ${INPUT_IMAGE_NAME}:latest
 fi
 if [ "$INPUT_ADDITIONAL_TAG" ]; then
-    docker tag ${SHA_NAME} ${INPUT_IMAGE_NAME}:$INPUT_ADDITIONAL_TAG
+    IFS=',' read -ra TAGS <<< "$INPUT_ADDITIONAL_TAG"
+    for tag in "${TAGS[@]}"; do
+        docker tag "${SHA_NAME}" "${INPUT_IMAGE_NAME}:${tag}"
+    done
 fi
 echo "::endgroup::"
 
