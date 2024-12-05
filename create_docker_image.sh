@@ -57,7 +57,7 @@ if [ -z "$INPUT_REPO_DIR" ];
 fi
 
 # Set Local Variables
-shortSHA=$(echo "${GITHUB_SHA}" | cut -c1-12)
+shortSHA=$(echo "${INPUT_IMAGE_SHA}" | cut -c1-12)
 SHA_NAME="${INPUT_IMAGE_NAME}:${shortSHA}"
 
 # Attempt to pull the image for a cached build
@@ -127,7 +127,7 @@ fi
 jupyter-repo2docker --no-run --user-id 1000 --user-name ${NB_USER} \
     --target-repo-dir ${REPO_DIR} --image-name ${SHA_NAME} --cache-from ${INPUT_IMAGE_NAME} \
     --label "repo2docker.repo=https://github.com/${GITHUB_REPOSITORY}" \
-    --label "repo2docker.ref=${GITHUB_REF}" \
+    --label "repo2docker.ref=${INPUT_IMAGE_REF}" \
     --appendix "$APPENDIX" ${INPUT_REPO2DOCKER_EXTRA_ARGS} ${PWD}
 
 if [ -z "$INPUT_LATEST_TAG_OFF" ]; then
