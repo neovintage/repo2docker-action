@@ -126,7 +126,7 @@ fi
 jupyter-repo2docker --no-run --user-id 1000 --user-name ${NB_USER} \
     --target-repo-dir ${REPO_DIR} --image-name ${SHA_NAME} --cache-from ${INPUT_IMAGE_NAME} \
     --label "repo2docker.repo=https://github.com/${GITHUB_REPOSITORY}" \
-    --label "repo2docker.ref=${INPUT_IMAGE_REF}" \
+    --label "repo2docker.ref=${INPUT_IMAGE_SHA}" \
     --appendix "$APPENDIX" ${INPUT_REPO2DOCKER_EXTRA_ARGS} ${PWD}
 
 if [ -z "$INPUT_LATEST_TAG_OFF" ]; then

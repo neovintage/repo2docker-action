@@ -17,10 +17,6 @@ inputs:
     description: Current commit SHA hash. If not provided, this defaults to $GITHUB_SHA.
     require: false
     default: ${{ github.sha }}
-  IMAGE_REF:
-    description: Git ref of the current branch or tag. If not provided, this defaults to $GITHUB_REF.
-    require: false
-    default: ${{ github.ref }}
   NOTEBOOK_USER:
     description: username of the primary user in the image
     require: false
