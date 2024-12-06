@@ -188,7 +188,7 @@ if [ "$INPUT_NO_PUSH" = "false" ]; then
 
     echo "PUSH_STATUS=true" >> $GITHUB_OUTPUT
 
-    if [ "$INPUT_PUBLIC_REGISTRY_CHECK" ]; then
+    if [ "$INPUT_PUBLIC_REGISTRY_CHECK" ] && [ "$INPUT_NO_PUSH" = "false" ]; then
         echo "::group::Verify That Image Is Public"
         docker logout
         if docker pull $SHA_NAME; then
