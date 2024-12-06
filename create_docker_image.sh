@@ -29,10 +29,9 @@ if [ -z "$INPUT_IMAGE_NAME" ]; then
     else
         INPUT_IMAGE_NAME="$INPUT_DOCKER_USERNAME/$REPO_NAME"
     fi
-
-    # Lower-case
-    INPUT_IMAGE_NAME="${INPUT_IMAGE_NAME,,}"
 fi
+# Lower-case
+INPUT_IMAGE_NAME="${INPUT_IMAGE_NAME,,}"
 
 # Prepend image name with registry if it is supplied
 if [ "$INPUT_DOCKER_REGISTRY" ]; then
